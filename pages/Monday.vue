@@ -8,10 +8,10 @@
         >
           Delete all notes
         </button>
-        <div class="flex gap-2">
+        <!-- <div class="flex gap-2">
           <span>Notes:</span>
-          <!-- <span>{{ notes.length }} / 50</span> -->
-        </div>
+          <span>{{ notes.length }} / 50</span>
+        </div> -->
       </div>
     </div>
     <TheNotesWrapper>
