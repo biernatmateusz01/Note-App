@@ -83,7 +83,7 @@ const count = ref(0);
 
 const deleteAll = () => {
   notes.value = [];
-  localStorage.setItem("wednesdayNotes", JSON.stringify(notes.value));
+  // localStorage.setItem("wednesdayNotes", JSON.stringify(notes.value));
 };
 
 const data = computed(() => {
