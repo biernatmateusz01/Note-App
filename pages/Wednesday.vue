@@ -3,7 +3,6 @@
     <div class="flex flex-col">
       <div class="flex justify-between p-8">
         <button
-          v-if="notes.length > 0"
           @click="deleteAll"
           class="shadow-md bg-white text-yellow-400 px-4 rounded py-2 hover:text-white hover:bg-yellow-300"
         >
@@ -62,7 +61,7 @@
         </BaseModal>
       </Transition>
 
-      <div v-if="notes.length < 50" class="fixed bottom-3 right-3">
+      <div  class="fixed bottom-3 right-3">
         <BaseButton v-if="!isOpen" @add-note="addNote" />
       </div>
     </TheNotesWrapper>
@@ -83,7 +82,7 @@ const count = ref(0);
 
 const deleteAll = () => {
   notes.value = [];
-  // localStorage.setItem("wednesdayNotes", JSON.stringify(notes.value));
+  localStorage.setItem("wednesdayNotes", JSON.stringify(notes.value));
 };
 
 const data = computed(() => {
