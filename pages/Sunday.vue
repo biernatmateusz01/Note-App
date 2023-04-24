@@ -5,7 +5,7 @@
       <button @click="deleteAll" class="shadow-md bg-white text-yellow-400 px-4 rounded py-2 hover:text-white hover:bg-yellow-300">
         Delete all notes
       </button>
-      <div class="flex gap-2">
+      <div class="flex gap-2 flex-col">
         <span>Notes:</span>
         <span>{{ notes.length }} / 50</span>
       </div>
@@ -134,8 +134,10 @@ const markAsDone = (note) => {
 };
 
 onMounted(() => {
-  localStorage.setItem("sundayNotes", JSON.stringify(notes.value));
-
+  if (localStorage.hasOwnProperty("sundayNotes")) {
+  } else {
+    localStorage.setItem("sundayNotes", JSON.stringify(notes.value));
+  }
   getNotesFromStorage();
 });
 </script>

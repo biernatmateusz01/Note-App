@@ -8,7 +8,7 @@
         >
           Delete all notes
         </button>
-        <div class="flex gap-2">
+        <div class="flex gap-2 flex-col">
           <span>Notes:</span>
           <span>{{ notes.length }} / 50</span>
         </div>
@@ -40,7 +40,7 @@
                   >Zawartość notatki</BaseTextarea
                 >
               </div>
-              <div class="flex gap-2 mt-3 justify-end">
+              <div class="mt-3 gap-2 flex justify-end">
                 <button
                   type="button"
                   @click="isOpen = !isOpen"
@@ -59,7 +59,39 @@
           </form>
         </BaseModal>
       </Transition>
+      <Transition>
+        <BaseModal @close-modal="closeModal" v-if="isEdit">
+          <form @submit.prevent="editNote">
+            <div
+              class="bg-white p-6 rounded shadow-md flex flex-col text-lg md:min-w-[400px]"
+            >
+              <span class="mb-2">Edit note </span>
+              <div class="flex flex-col gap-2">
+                <BaseInput :id="2" v-model="vEditTitle">Tytuł</BaseInput>
 
+                <BaseTextarea :id="2" v-model="vEditNote"
+                  >Zawartość notatki</BaseTextarea
+                >
+              </div>
+              <div class="flex gap-2 mt-3 justify-end">
+                <button
+                  type="button"
+                  @click="isEdit = !isEdit"
+                  class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+                >
+                  back
+                </button>
+                <button
+                  type="submit"
+                  class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+                >
+                  add
+                </button>
+              </div>
+            </div>
+          </form>
+        </BaseModal>
+      </Transition>
       <div v-if="notes.length < 50" class="fixed bottom-3 right-3">
         <BaseButton v-if="!isOpen" @add-note="addNote" />
       </div>
@@ -68,8 +100,6 @@
 </template>
 
 <script setup>
-// import { computed } from "vue";
-
 const vNote = ref("");
 const isOpen = ref(false);
 const vTitle = ref("");
@@ -78,6 +108,10 @@ const isOpenEdit = ref(false);
 const number = ref(1);
 const isLoader = ref(false);
 const count = ref(0);
+const itemForEdit = ref(null);
+const isEdit = ref(false);
+const vEditTitle = ref("");
+const vEditNote = ref("");
 
 const deleteAll = () => {
   notes.value = [];
@@ -94,6 +128,26 @@ const data = computed(() => {
   const fullDate = `${day}-0${month}-${year}`;
   return fullDate;
 });
+
+const editItem = (item) => {
+  vEditNote.value = "";
+  vEditTitle.value = "";
+  isEdit.value = true;
+  itemForEdit.value = item;
+
+  console.log(itemForEdit);
+};
+
+const editNote = () => {
+  console.log(itemForEdit);
+
+  itemForEdit.value.title = vEditTitle;
+  itemForEdit.value.text = vEditNote;
+  console.log(itemForEdit);
+  // localStorage.setItem("mondayNotes", JSON.stringify(notes.value));
+
+  isEdit.value = false;
+};
 
 const deleteItem = (note) => {
   const indexOfObject = notes.value.findIndex((object) => {
@@ -137,8 +191,10 @@ const markAsDone = (note) => {
 };
 
 onMounted(() => {
-  localStorage.setItem("mondayNotes", JSON.stringify(notes.value));
-
+  if (localStorage.hasOwnProperty("mondayNotes")) {
+  } else {
+    localStorage.setItem("mondayNotes", JSON.stringify(notes.value));
+  }
   getNotesFromStorage();
 });
 </script>

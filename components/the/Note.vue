@@ -29,13 +29,13 @@
             alt=""
           />
         </button>
-        <!-- <button @click="$emit('edit-item', $event)">
+        <button @click="$emit('edit-item', $event)">
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEX///8AAAD09PTY2NjU1NTu7u5tbW1ZWVnx8fEnJyf19fVsbGwpKSk3NzcjIyNcXFwaGhoVFRUwMDC7u7uMjIykpKSVlZXIyMhFRUVPT0/j4+NKSkre3t5iYmIRERHHx8d7e3t/f388PDytra2ZmZkWJ9VpAAAEvElEQVR4nO2c6XbiMAyFk7CFUAoFAmUrUHj/ZxwI2MhrcjIMsTL3+9c47dFFkiUvNIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAlrLJF/3t/rQ8JE1b8k/Ilr+xZLRq2pzXk09jhcGuaYteS/YdG+RNG/VKdl+mwDg+Nm3W6+ja9F2ZNG3Yq+g4BLZGolvgdb5p2rhXoIbodr+ftUwiFfiTp9cn2e7YpkClIbrOxNNVeyRSgXvHc9aB2nUIVEcYS6Se6nvG9tbfZoBSJgwVLQhUrZMxVLhDmAlGq2ZMmtSLyyZM/DssnYw3UOdNGPk3WFs1I1DJW8PM9mfCxbGa8OUir+UiFdj31gUy2IShddHqIP3RmG6eH8ahCVPr0VUFljQwuRg5vd/SmhgC1UeGF+Vq6t2G1oXG5Mj2UM/FBTOFjl7U06PJpRSPfWIajyPXwMD+Kyx2UC05KHAGqvRh752W1sSag7ZBOt3IyfSNhtbFtx6MnLm45aPQmYO2F6TEg+czCYwSD+qvPHIxlRv+wa8uKgi05GL23D0NfXHhmUVdr10DNXmeKYbetFUUqO1d9MihW+C1wlsm3K8SLu8xtC6eHEyNGcQqseRjaRpPmUim5iRp2QAYv83WWnhyMCtO70u9+BF2EnpCNHlcTyiROEzfZmwdfDnorOYdejNjGPayyZODGbmfoN2fScckRPl4UBdI/LRVh1JyDjzkm4PEg2tt6JNliOo5SDyobVv0iAc/2QrMftwCaQ7yCVFPDn6rQ8kH8SAfgXqIuj2Y8sxBS6tWIUQDL/SlrdodbRZNeeago1WzCFTKBFsP+soEnWT45OD/XCa0Vi2hhZ6PQE+Z0CeZ1peJdrRq7ma7/TlIZ9Gwy0SlFb0ZosNW5KBHIM8Vfb1Wje+KvldxRR+2B3tugdHcHaJ8ykR0dAskp/F8W7Uoe874R8vwQ6K+oufTqilZeLSNryweVFq10I9Ao4snDQtWnFf0NyZxmcSDFqKccvBKFselElUS2smE78HnrZCqEumKPvBW7c5CU1h2bMuoVXvwqSv0e5HR4cuD1BDolcioVRPItmzxU0Gi0qoFXwfv9IXBaYWrM8zKxB0RdeMK97sYHb48kaouUen9IEa7agR5zbU4kPcGKrNWTSBbtvuPvl19jjlIdpnE9WVnLjIsEwXSZ7nxRJXI6PBFRbZsG/nIuu3Gr1UTiHugM/LMEqisVvQKiTD7SJ8aEnmWiQLZsqn307Rc5LSrpiN32Tbqc0Uiy1ZNIAz/1gccV5p55eCVnbB8YQxZJTLLwStnYbrlf5B1fwyBvMpEgdayqSwND3IL0SjKRBFY6yOd3PwvZZxaNYHZst3YnPuGuphfmSiQcSi/5Nk7HH9t8hiWiYKBmobdpUNdzLBMFMhdttPtv1cOnOpuHuQYovQrkKehT971BSa7ajrGZreN9bK7YhmhN6Zl6qan4L/+6aXnVfexP2/K/0bYnN3yJpcO08xTGNnVzRYrnhOnydhU99WfM2zNnKy1aWWSd5o26cWQu0DxetFtk/ME+4e847wtiWcwH8wm/GsCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaBN/AIRiK/yTIZQQAAAAAElFTkSuQmCC"
             alt=""
             class="w-6 h-6"
           />
-        </button> -->
+        </button>
         <button @click="$emit('mark-done', $event)">
           <img
             src="

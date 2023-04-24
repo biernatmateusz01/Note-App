@@ -8,7 +8,7 @@
         >
           Delete all notes
         </button>
-        <div class="flex gap-2">
+        <div class="flex gap-2 flex-col">
           <span>Notes:</span>
           <span>{{ notes.length }} / 50</span>
         </div>
@@ -137,8 +137,10 @@ const markAsDone = (note) => {
 };
 
 onMounted(() => {
-  localStorage.setItem("fridayNotes", JSON.stringify(notes.value));
-
+  if (localStorage.hasOwnProperty("fridayNotes")) {
+  } else {
+    localStorage.setItem("fridayNotes", JSON.stringify(notes.value));
+  }
   getNotesFromStorage();
 });
 </script>
