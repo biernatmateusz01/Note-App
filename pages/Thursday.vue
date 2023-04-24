@@ -5,10 +5,10 @@
       <button  @click="deleteAll" class="shadow-md bg-white text-yellow-400 px-4 rounded py-2 hover:text-white hover:bg-yellow-300">
         Delete all notes
       </button>
-      <!-- <div class="flex gap-2">
+      <div class="flex gap-2">
         <span>Notes:</span>
         <span>{{ notes.length }} / 50</span>
-      </div> -->
+      </div>
     </div>
     <TheNotesWrapper>
       <TheNote
@@ -57,7 +57,7 @@
         </BaseModal>
       </Transition>
 
-      <div  class="fixed bottom-3 right-3">
+      <div v-if="notes.length < 50"  class="fixed bottom-3 right-3">
         <BaseButton v-if="!isOpen" @add-note="addNote" />
       </div>
     </TheNotesWrapper>
@@ -134,6 +134,8 @@ const markAsDone = (note) => {
 };
 
 onMounted(() => {
+  localStorage.setItem("thursdayNotes", JSON.stringify(notes.value));
+
   getNotesFromStorage();
 });
 </script>
