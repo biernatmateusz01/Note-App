@@ -68,5 +68,15 @@ const navigation = [
     name: "Sunday",
     href: "/sunday",
   },
+  {
+    id: 8,
+    name: "Done",
+    href: "/done"
+  },
+    {
+    id: 9,
+    name: "Trash",
+    href: "/trash"
+  }
 ];
 </script>
