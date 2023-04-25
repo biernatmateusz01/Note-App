@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center h-full font-semibold text-white"
+    class="flex flex-col items-center justify-center h-full font-semibold text-white p-4"
   >
     <div class="flex flex-col">
       <h1 class="font-semibold text-4xl">Notes App</h1>

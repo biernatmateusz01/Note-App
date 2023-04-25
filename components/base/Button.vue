@@ -6,9 +6,3 @@
     <span class="text-3xl">+</span>
   </button>
 </template>
-
-<!-- <script>
-defineProps({
-    addNewNote: Boolean,
-});
-</script> -->
