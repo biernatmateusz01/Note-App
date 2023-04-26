@@ -198,6 +198,8 @@ const deleteItem = (note) => {
 const closeModal = () => {
   isOpen.value = false;
   isEdit.value = false;
+  isDeleteModal.value = false;
+
 };
 
 const addNote = () => {

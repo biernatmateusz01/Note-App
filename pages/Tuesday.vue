@@ -175,7 +175,6 @@ useHead({
 const deleteAll = () => {
   notes.value = [];
   localStorage.setItem("tuesdayNotes", JSON.stringify(notes.value));
-
   isDeleteModal.value = false;
 };
 
@@ -202,6 +201,7 @@ const deleteItem = (note) => {
 const closeModal = () => {
   isOpen.value = false;
   isEdit.value = false;
+  isDeleteModal.value = false;
 };
 
 const addNote = () => {

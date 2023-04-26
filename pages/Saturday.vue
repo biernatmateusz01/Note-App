@@ -53,7 +53,7 @@
 
                 <BaseTextarea :id="1" v-model="vNote">Notes value</BaseTextarea>
               </div>
-              <div class="mt-3 justify-end">
+              <div class="mt-3 justify-end flex gap-2">
                 <button
                   type="button"
                   @click="isOpen = !isOpen"
