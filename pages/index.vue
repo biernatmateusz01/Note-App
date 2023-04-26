@@ -8,3 +8,9 @@
     </div>
   </div>
 </template>
+
+<script setup>
+useHead({
+  title: "notesApp",
+});
+</script>

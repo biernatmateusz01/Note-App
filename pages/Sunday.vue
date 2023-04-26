@@ -2,9 +2,9 @@
   <div class="flex flex-col">
     <BaseLoader v-show="isLoader" />
     <div class="flex justify-between p-8">
-      <div>
+      <div v-show="notes.length > 0">
         <button
-          @click="deleteAll"
+          @click="isDeleteModal = !isDeleteModal"
           class="shadow-md bg-white text-yellow-400 px-4 rounded py-2 hover:text-white hover:bg-yellow-300"
         >
           <svg
@@ -48,11 +48,9 @@
                 <span class="text-blue-400 font-semibold">Sunday</span></span
               >
               <div class="flex flex-col gap-2">
-                <BaseInput :id="1" v-model="vTitle">Tytuł</BaseInput>
+                <BaseInput :id="1" v-model="vTitle">Title</BaseInput>
 
-                <BaseTextarea :id="1" v-model="vNote"
-                  >Zawartość notatki</BaseTextarea
-                >
+                <BaseTextarea :id="1" v-model="vNote">Notes value</BaseTextarea>
               </div>
               <div class="flex gap-2 mt-3 justify-end">
                 <button
@@ -81,10 +79,10 @@
             >
               <span class="mb-2">Edit note </span>
               <div class="flex flex-col gap-2">
-                <BaseInput :id="2" v-model="vEditTitle">Tytuł</BaseInput>
+                <BaseInput :id="2" v-model="vEditTitle">Title</BaseInput>
 
                 <BaseTextarea :id="2" v-model="vEditNote"
-                  >Zawartość notatki</BaseTextarea
+                  >Notes value</BaseTextarea
                 >
               </div>
               <div class="flex gap-2 mt-3 justify-end">
@@ -106,6 +104,45 @@
           </form>
         </BaseModal>
       </Transition>
+      <Transition>
+        <BaseModal @close-modal="closeModal" v-if="isDeleteModal">
+          <div
+            class="bg-white p-6 rounded shadow-md flex flex-col text-lg md:min-w-[400px]"
+          >
+            <p>Are you sure you want to delete all the notes ?</p>
+            <div class="mt-4 flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-24 h-24 text-red-600"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                />
+              </svg>
+            </div>
+            <div class="mt-3 flex gap-1 items-center justify-center">
+              <button
+                @click="isDeleteModal = !isDeleteModal"
+                class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+              >
+                no
+              </button>
+              <button
+                @click="deleteAll"
+                class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+              >
+                yes
+              </button>
+            </div>
+          </div>
+        </BaseModal>
+      </Transition>
       <div v-if="notes.length < 50" class="fixed bottom-3 right-3">
         <BaseButton v-if="!isOpen" @add-note="addNote" />
       </div>
@@ -114,8 +151,6 @@
 </template>
 
 <script setup>
-// import { computed } from "vue";
-
 const vNote = ref("");
 const isOpen = ref(false);
 const vTitle = ref("");
@@ -128,10 +163,16 @@ const itemForEdit = ref(null);
 const isEdit = ref(false);
 const vEditTitle = ref("");
 const vEditNote = ref("");
+const isDeleteModal = ref(false);
+
+useHead({
+  title: "sundayApp",
+});
 
 const deleteAll = () => {
   notes.value = [];
   localStorage.setItem("sundayNotes", JSON.stringify(notes.value));
+  isDeleteModal.value = false;
 };
 
 const data = computed(() => {
@@ -156,6 +197,8 @@ const deleteItem = (note) => {
 
 const closeModal = () => {
   isOpen.value = false;
+  isEdit.value = false;
+  isDeleteModal.value = false;
 };
 
 const addNote = () => {
@@ -202,11 +245,18 @@ const editNote = () => {
   isEdit.value = false;
 };
 
+const filterArray = () => {
+  notes.value.sort((a, b) => a - b);
+  console.log(notes.value);
+  // dates.sort((date1, date2) => date1 - date2);
+};
+
 onMounted(() => {
   if (localStorage.hasOwnProperty("sundayNotes")) {
   } else {
     localStorage.setItem("sundayNotes", JSON.stringify(notes.value));
   }
   getNotesFromStorage();
+  filterArray();
 });
 </script>

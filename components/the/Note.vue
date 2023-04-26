@@ -14,7 +14,7 @@
     </div>
     <div class="w-full flex justify-between mb-2 overflow-auto">
       <div class="flex flex-col">
-        <span class="text-xs">Dodano:</span>
+        <span class="text-xs">Added:</span>
         <span
           v-if="note.hasOwnProperty('creationDate')"
           class="text-yellow-400 text-sm font-semibold"
