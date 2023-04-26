@@ -248,11 +248,10 @@ const editNote = () => {
   isEdit.value = false;
 };
 
-const filterArray = () => {
-  notes.value.sort((a, b) => a - b);
-  console.log(notes.value);
-  // dates.sort((date1, date2) => date1 - date2);
-};
+// const filterArray = () => {
+//   notes.value.sort((a, b) => a - b);
+//   // dates.sort((date1, date2) => date1 - date2);
+// };
 
 onMounted(() => {
   if (localStorage.hasOwnProperty("sundayNotes")) {
