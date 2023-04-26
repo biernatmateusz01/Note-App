@@ -33,6 +33,7 @@
         v-for="note in notes"
         :key="note.id"
         :note="note"
+        options
         @delete-item="deleteItem(note)"
         @edit-item="editItem(note)"
         @mark-done="markAsDone(note)"
@@ -212,6 +213,8 @@ const addNewNote = () => {
     title: vTitle,
     creationDate: data,
     done: false,
+    day: 'sunday'
+
   });
 
   localStorage.setItem("sundayNotes", JSON.stringify(notes.value));

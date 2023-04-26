@@ -21,7 +21,7 @@
           >{{ note.creationDate }}</span
         >
       </div>
-      <div v-if="!note.done" class="flex gap-1">
+      <div v-if="options" class="flex gap-1">
         <button @click="$emit('delete-item', $event)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +71,9 @@
           </svg>
         </button>
       </div>
+      <div v-if="restore">
+        <button @click="$emit('remove-item', $event)">restore</button>
+      </div>
     </div>
     <div class="flex justify-between gap-4">
       <p class="text-lg font-semibold text-gray-700">{{ note.title }}</p>
@@ -82,6 +85,8 @@
 <script setup>
 defineProps({
   note: Object,
+  options: Boolean,
+  restore: Boolean,
 });
 
 const done = ref(false);

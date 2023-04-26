@@ -79,6 +79,11 @@ const navigation = [
   //   name: "Trash",
   //   href: "/trash",
   // },
+    {
+    id: 10,
+    name: "All",
+    href: "/all",
+  },
 ];
 </script>
 <style scoped>

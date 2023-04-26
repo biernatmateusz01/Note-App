@@ -34,6 +34,7 @@
         v-for="note in notes"
         :key="note.id"
         :note="note"
+        options
         @delete-item="deleteItem(note)"
         @edit-item="editItem(note)"
         @mark-done="markAsDone(note)"
@@ -51,9 +52,7 @@
               <div class="flex flex-col gap-2">
                 <BaseInput :id="1" v-model="vTitle">Title</BaseInput>
 
-                <BaseTextarea :id="1" v-model="vNote"
-                  >Notes value</BaseTextarea
-                >
+                <BaseTextarea :id="1" v-model="vNote">Notes value</BaseTextarea>
               </div>
               <div class="mt-3 gap-2 flex justify-end">
                 <button
@@ -130,8 +129,18 @@
               </svg>
             </div>
             <div class="mt-3 flex gap-1 items-center justify-center">
-              <button @click="isDeleteModal = !isDeleteModal" class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs">no</button>
-              <button @click="deleteAll" class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs">yes</button>
+              <button
+                @click="isDeleteModal = !isDeleteModal"
+                class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+              >
+                no
+              </button>
+              <button
+                @click="deleteAll"
+                class="bg-yellow-400 py-2 px-4 rounded text-white shadow-sm text-xs"
+              >
+                yes
+              </button>
             </div>
           </div>
         </BaseModal>
@@ -164,7 +173,7 @@ useHead({
 const deleteAll = () => {
   notes.value = [];
   localStorage.setItem("mondayNotes", JSON.stringify(notes.value));
-  isDeleteModal.value = false
+  isDeleteModal.value = false;
 };
 
 const data = computed(() => {
@@ -174,7 +183,7 @@ const data = computed(() => {
   const month = data.getMonth();
   const year = data.getFullYear();
 
-  const fullDate = `${day}-0${month+1}-${year}`;
+  const fullDate = `${day}-0${month + 1}-${year}`;
   return fullDate;
 });
 
@@ -219,6 +228,7 @@ const addNewNote = () => {
     title: vTitle,
     creationDate: data,
     done: false,
+    day: 'monday'
   });
 
   localStorage.setItem("mondayNotes", JSON.stringify(notes.value));

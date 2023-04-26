@@ -34,6 +34,7 @@
         v-for="note in notes"
         :key="note.id"
         :note="note"
+        options
         @delete-item="deleteItem(note)"
         @edit-item="editItem(note)"
         @mark-done="markAsDone(note)"
@@ -200,7 +201,6 @@ const closeModal = () => {
   isOpen.value = false;
   isEdit.value = false;
   isDeleteModal.value = false;
-
 };
 
 const addNote = () => {
@@ -214,6 +214,7 @@ const addNewNote = () => {
     title: vTitle,
     creationDate: data,
     done: false,
+    day: "saturday",
   });
 
   localStorage.setItem("saturdayNotes", JSON.stringify(notes.value));
