@@ -259,6 +259,6 @@ onMounted(() => {
     localStorage.setItem("sundayNotes", JSON.stringify(notes.value));
   }
   getNotesFromStorage();
-  filterArray();
+  // filterArray();
 });
 </script>
